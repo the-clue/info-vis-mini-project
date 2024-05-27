@@ -1,7 +1,7 @@
 # info-vis-mini-project
  
-#### Mosquitoes Visualization
-This project visualizes the movement of mosquitoes using D3.js. The mosquitoes move to different positions on click, and users can click on individual mosquitoes to "squash" them, which will turn them red and make them unable to move.
+## Mosquitoes Visualization
+This project visualizes the movement and interaction of mosquitoes based on multivariate data. The project uses a datafile with 10 data-cases, each containing 6 variables. Each pair of variables (first and second, third and fourth, fifth and sixth) represent a coordinate of a mosquito. The mosquitoes move to different positions on click (cycling between the coordinates), and users can click on individual mosquitoes to "squash" them, which will turn them red and make them unable to move.
 
 ### Features
 - Dynamic mosquito movement on click
@@ -16,4 +16,4 @@ This project visualizes the movement of mosquitoes using D3.js. The mosquitoes m
 - images/mosquito.svg: The SVG file for the mosquito silhouette.
 
 ### Demo
-wip
+https://the-clue.github.io/info-vis-mini-project
