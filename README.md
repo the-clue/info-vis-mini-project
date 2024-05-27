@@ -16,4 +16,4 @@ This project visualizes the movement and interaction of mosquitoes based on mult
 - images/mosquito.svg: The SVG file for the mosquito silhouette.
 
 ### Demo
-https://the-clue.github.io/info-vis-mini-project
+[See the live demo here.](https://the-clue.github.io/info-vis-mini-project)
