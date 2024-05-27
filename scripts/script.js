@@ -1,3 +1,7 @@
+// Directories
+const data_path = "data/data_01.json"
+const svg_path = "images/mosquito.svg"
+
 // Function to load the SVG
 function loadSVG(url, callback) {
     d3.xml(url).then(data => {
@@ -8,7 +12,7 @@ function loadSVG(url, callback) {
 
 // Function to initialize the visualization
 function initVisualization() {
-    d3.json("data_01.json").then(data => {
+    d3.json(data_path).then(data => {
         const svg = d3.select("#mosquito-svg");
         const width = +svg.attr("width");
         const height = +svg.attr("height");
@@ -108,4 +112,4 @@ function initVisualization() {
 }
 
 // Load the SVG and initialize the visualization
-loadSVG("mosquito.svg", initVisualization);
+loadSVG(svg_path, initVisualization);

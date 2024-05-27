@@ -1,3 +1,15 @@
+<!-- 
+Traccia:
+Crea un file json con dei dati multivariati: ci sono 10 data-cases e ogni data-case ha sei variabili quantitative i cui valori sono tutti positivi.
+In base a questi dati disegna 10 piccole zanzare (basta la silhouette) che hanno le coordinate x e y prese dalle prime due variabili quantitative.
+Facendo click con il pulsante sinistro del mouse sullo sfondo, le zanzare si spostano nell'area di disegno assumendo una nuova configurazione (che usa le variabili 3 e 4).
+Cliccando ancora si spostano nella posizione data dalle variabili 5 e 6.
+Dopo l'ultima configurazione, al click successivo, si torna alla prima configurazione.
+Se l'utente clicca con il pulsante sinistro del mouse su una zanzara, invece, questa rimane schiacciata e non si muove più.
+Fai in modo che tutti i movimenti delle zanzare siano fluidi con un'animazione.
+Usa le scale d3.js per mappare l'intervallo dei valori delle variabili (che deve poter essere arbitrario) sull'intervallo dei valori delle coordinate, che dipende dalla tua interfaccia.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mosquitoes</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <div id="container">
@@ -16,6 +28,6 @@
     <!-- Tooltip to show x and y values -->
     <div id="tooltip"></div>
 
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
