@@ -4,9 +4,17 @@ body {
     padding: 0;
     background-color: #f2f2f2;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+#title {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 #container {
@@ -14,6 +22,14 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    max-width: 100%;
+    height: auto;
 }
 
 .mosquito {
@@ -38,4 +54,19 @@ body {
     border-radius: 5px;
     transition: opacity 0.3s ease-in-out;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    #title {
+        font-size: 20px;
+    }
+
+    #container {
+        padding: 10px;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
 }

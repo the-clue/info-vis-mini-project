@@ -1,6 +1,6 @@
 # info-vis-mini-project
  
-## Mosquitoes Visualization
+## Mosquitoes Flying Around
 This project visualizes the movement and interaction of mosquitoes based on multivariate data. The project uses a datafile with 10 data-cases, each containing 6 variables. Each pair of variables (first and second, third and fourth, fifth and sixth) represent a coordinate of a mosquito. The mosquitoes move to different positions on click (cycling between the coordinates), and users can click on individual mosquitoes to "squash" them, which will turn them red and make them unable to move.
 
 ### Features

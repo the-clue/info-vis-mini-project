@@ -1,5 +1,5 @@
 // Directories
-const data_path = "data/data_01.json"
+const data_path = "data/data_01.json" // Change this to use other data_cases
 const svg_path = "images/mosquito.svg"
 
 // Function to load the SVG
@@ -26,7 +26,8 @@ function initVisualization() {
         const yScale = d3.scaleLinear()
             .domain([0, d3.max(data, d => Math.max(d.y1, d.y2, d.y3))])
             .range([margin, height - margin]);
-        /* Alternative that puts the margins on the domain
+        /*
+        // Alternative that puts the margins on the domain
         const xScale = d3.scaleLinear()
             .domain([0 - margin, d3.max(data, d => Math.max(d.x1, d.x2, d.x3)) + margin])
             .range([0, width]);
@@ -35,8 +36,8 @@ function initVisualization() {
             .range([0, height]);
         */
 
-        let configIndex = 0;
-        const scaleFactor = 0.05; // Adjust this factor to scale the mosquitoes
+        let configIndex = 0; // Indicates which variables to use
+        const scaleFactor = 0.05; // Factor to scale the size of the mosquitoes
 
         let currentX = "x1";
         let currentY = "y1";
@@ -52,13 +53,15 @@ function initVisualization() {
                 d3.select(this).classed("squashed", true).classed("mosquito", false);
                 event.stopPropagation();
             })
-            // Show tooltip indicating the coordinates of the mosquito
+            // Shows tooltip indicating the id (for debugging) and the coordinates of the mosquito
             .on("mouseover", function(event, d) {
-                const tooltip = d3.select("#tooltip");
-                tooltip.style("display", "block");
-                tooltip.html(`id: ${d.id}, x: ${d[currentX]}, y: ${d[currentY]}`)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 10) + "px");
+                if (!d3.select(this).classed("squashed")) { // So that tooltips are not shown for squashed mosquitoes
+                    const tooltip = d3.select("#tooltip");
+                    tooltip.style("display", "block");
+                    tooltip.html(`id: ${d.id}, x: ${d[currentX]}, y: ${d[currentY]}`)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 10) + "px");
+                }
             })
             .on("mouseout", function() {
                 d3.select("#tooltip").style("display", "none");
@@ -86,9 +89,9 @@ function initVisualization() {
 
             mosquitoes.filter(".mosquito").transition()
                 .duration(1000)
-                // Use this if you don't like the flipping
+                // Use this instead of all the code below if you don't like the flipping effect when changing positions
                 //.attr("transform", d => `translate(${xScale(d[currentX])}, ${yScale(d[currentY])}) scale(${scaleFactor})`);
-                .attr("transform", d => {
+                .attr("transform", d => { // this moves the mosquitoes and flips them with respect to the direction of movement
                     const newX = xScale(d[currentX]);
                     const newY = yScale(d[currentY]);
                     const dx = xScale(d[currentX]) - xScale(d.previousX || d.x1); // Calculate the change in x
@@ -97,7 +100,7 @@ function initVisualization() {
                     // Calculate the scale factor along the x-axis based on the direction of movement
                     const scaleX = dx > 0 ? -scaleFactor : scaleFactor;
 
-                    // Used to compensate the flip as it doesn't flip from the center but from the left edge
+                    // Used to compensate the flip as it doesn't flip from the center but from the left edge of the SVG
                     xCompensation = dx > 0 ? (-width) : 0;
 
                     return `translate(${newX}, ${newY}) scale(${scaleX}, ${scaleFactor}) translate(${xCompensation}, 0)`;
